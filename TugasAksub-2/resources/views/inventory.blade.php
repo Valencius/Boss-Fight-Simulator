@@ -20,10 +20,10 @@
         </div>
 
         <div class="container mt-5">
-            <a href="/" class="btn btn-danger" type="submit">
+            <a href="{{route('home')}}" class="btn btn-danger" type="submit">
                 Back
             </a>
-            <a href="/inventory/add" class="btn btn-primary" type="submit">
+            <a href="{{route('inv.add')}}" class="btn btn-primary" type="submit">
                 Add New Item
             </a>
 
@@ -70,11 +70,15 @@
                             </p>
 
                             <div class="mt-3 d-flex">
-                                <a href="#" class="btn btn-primary"> Sell </a>
+                                <form method="post" action="{{route('inv.delete',['id' => $item->id])}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-primary"> Sell </button>
+                                </form>
                                 <a
-                                    href="/edit-task.html"
-                                    class="btn btn-warning ms-2 disabled"
-                                    >Buy More</a
+                                    href="{{route('inv.edit',['id' => $item->id])}}"
+                                    class="btn btn-warning ms-2 "
+                                    >Edit Item</a
                                 >
                                 
                             </div>

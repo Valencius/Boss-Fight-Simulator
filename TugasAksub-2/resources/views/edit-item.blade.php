@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Edit Task</title>
+        <title>Edit Item</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -15,45 +15,55 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-3">
-                    <form method="" action="">
-                        <h3 class="mb-3">Edit Task</h3>
+                    <form method="post" action="{{route('inv.update',[$id=>$Inventory->id])}}">
+                        @csrf
+                        @method('patch')                     
+                        <h3 class="mb-3">Edit Item</h3>
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
+                            <label for="name" class="form-label">Name</label>
                             <input
                                 type="text"
                                 class="form-control"
-                                id="title"
-                                name="title"
-                                value="Title"
+                                id="name"
+                                name="name"
+                                value="{{$Inventory->name}}"
                             />
                         </div>
                         <div class="mb-3">
-                            <label for="details" class="form-label"
-                                >Details</label
+                            <label for="desc" class="form-label"
+                                >Description</label
                             >
                             <textarea
-                                name="details"
-                                id="details"
+                                name="desc"
+                                id="desc"
                                 cols="30"
                                 rows="2"
                                 class="form-control"
-                            >
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut culpa assumenda odit eaque nam dolores commodi dignissimos, minus dolorem in accusantium, quia a delectus aliquam ex velit numquam fugiat saepe!</textarea
+                            >{{$Inventory->desc}}</textarea
                             >
                         </div>
                         <div class="mb-3">
-                            <label for="priority" class="form-label">
-                                Priority
+                            <label for="type" class="form-label">
+                                Type
                             </label>
                             <select
-                                name="priority"
-                                id="priority"
+                                name="type"
+                                id="type"
                                 class="form-select"
                             >
-                                <option value="Low" selected>Low</option>
-                                <option value="Medium">Medium</option>
-                                <option value="High">High</option>
+                                <option value="Weapon" @if($Inventory->type === "Weapon") selected @endif>Weapon</option>
+                                <option value="Armor" @if($Inventory->type === "Armor") selected @endif>Armor</option>
+                                <option value="Potion" @if($Inventory->type === "Potion") selected @endif>Potion</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Amount</label>
+                            <input
+                                type="integer"
+                                class="form-control"
+                                name="amount"
+                                value="{{$Inventory->amount}}"
+                            />
                         </div>
                         <div class="row justify-content-center">
                             <button type="submit" class="btn btn-primary">

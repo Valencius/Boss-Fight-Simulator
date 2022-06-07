@@ -15,7 +15,7 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-3">
-                    <form method="post" action="/inventory/create">
+                    <form method="post" action="{{route('inv.create')}}">
                         @csrf
                         <h3 class="mb-3">Create New Item</h3>
                         <div class="mb-3">

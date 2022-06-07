@@ -18,9 +18,13 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [InvController::class, 'Home']);
-Route::get('/inventory', [InvController::class, 'Inventory']);
-Route::get('/inventory/add', [InvController::class, 'AddInv']);
-Route::get('/inventory/edit', [InvController::class, 'EditInv']);
+Route::get('/mainMenu', [InvController::class, 'Home'])->name('home');
 
-Route::post('/inventory/create', [InvController::class, 'CreateInv']);
+Route::get('/PlayerInv', [InvController::class, 'Inventory'])->name('inv');
+Route::prefix('PlayerInv')->group(function (){
+    Route::get('/add', [InvController::class, 'AddInv'])->name('inv.add');
+    Route::get('/{id}/edit', [InvController::class, 'EditInv'])->name('inv.edit');
+    Route::patch('/{id}/update',[InvController::class, 'UpdateInv'])->name('inv.update');
+    Route::delete('/{id}/delete',[InvController::class, 'DeleteItem'])->name('inv.delete');
+    Route::post('/create', [InvController::class, 'CreateInv'])->name('inv.create');
+});

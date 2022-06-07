@@ -12,20 +12,23 @@ class InvController extends Controller
         $Inventory = Inventory::all();
         // dd($Inventory);
 
-        return view('inventory', ['Inventory' => $Inventory]);
+        return view('inventory', compact('Inventory'));
     }
 
     public function AddInv() {
         return view('add-item');
     }
 
-    public function EditInv() {
-        return view('edit-task');
+    public function EditInv($id) {
+
+        $Inventory = Inventory::find($id);
+
+        return view('edit-item', compact('Inventory',"id"));
     }
 
 
     public function Home() {
-        return view('Home');
+        return view('home');
     }
 
     public function CreateInv(Request $request){
@@ -37,6 +40,27 @@ class InvController extends Controller
             'amount'=> $request->amount
         ]); 
 
-        return redirect('/inventory');
+        return redirect(route('inv'));
+    }
+
+    public function updateInv(Request $request, $id) {
+        $Inventory = Inventory::find($id);
+
+        $Inventory->name = $request->name;
+        $Inventory->desc = $request->desc;
+        $Inventory->type = $request->type;
+        $Inventory->amount = $request->amount;
+
+        $Inventory->save();
+
+        return redirect(route('inv'));
+    }
+
+    public function deleteItem($id){
+        $Inventory = Inventory::find($id);
+
+        $Inventory->delete();
+
+        return redirect(route('inv'));
     }
 }

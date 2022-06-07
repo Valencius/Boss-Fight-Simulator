@@ -26,7 +26,7 @@
             <a href="/" class="btn btn-success disabled">
                 Shop (Coming Soon)
             </a>
-            <a href="/inventory" class="btn btn-primary" type="submit">
+            <a href="{{route('inv')}}" class="btn btn-primary" type="submit">
                 Inventory
             </a>
 
