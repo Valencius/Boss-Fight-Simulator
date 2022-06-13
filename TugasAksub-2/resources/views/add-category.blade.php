@@ -15,9 +15,9 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-3">
-                    <form method="post" action="{{route('inv.create')}}">
+                    <form method="post" action="{{route('inv.createCat')}}">
                         @csrf
-                        <h3 class="mb-3">Create New Item</h3>
+                        <h3 class="mb-3">Create New Category</h3>
                         <div class="mb-3">
                             <label for="title" class="form-label">Name</label>
                             <input
@@ -27,45 +27,14 @@
                                 name="title"
                             />
                         </div>
-                        <div class="mb-3">
-                            <label for="desc" class="form-label"
-                                >Description</label
-                            >
-                            <textarea
-                                name="desc"
-                                id="desc"
-                                cols="30"
-                                rows="2"
-                                class="form-control"
-                            ></textarea>
-                        </div>
                         
-                        <div class="mb-3">
-                            <label for="category" class="form-label">
-                                Categories
-                            </label>
-                            <select
-                                name="category_id"
-                                id="category"
-                                class="form-select"
-                            >
-                                @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        
+                        
 
                         
 
 
-                        <div class="mb-3">
-                            <label for="amount" class="form-label">Amount</label>
-                            <input
-                                type="integer"
-                                class="form-control"
-                                name="amount"
-                            />
-                        </div>
+                        
                         
                         <div class="row justify-content-center">
                             <button type="submit" class="btn btn-primary">

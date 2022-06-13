@@ -43,17 +43,17 @@
                             >
                         </div>
                         <div class="mb-3">
-                            <label for="type" class="form-label">
-                                Type
+                            <label for="category" class="form-label">
+                                Category
                             </label>
                             <select
-                                name="type"
+                                name="category_id"
                                 id="type"
                                 class="form-select"
                             >
-                                <option value="Weapon" @if($Inventory->type === "Weapon") selected @endif>Weapon</option>
-                                <option value="Armor" @if($Inventory->type === "Armor") selected @endif>Armor</option>
-                                <option value="Potion" @if($Inventory->type === "Potion") selected @endif>Potion</option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}" @if($Inventory->category_id === $category->id) selected @endif>{{$category->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3">

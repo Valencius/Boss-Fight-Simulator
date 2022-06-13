@@ -26,21 +26,19 @@
             <a href="{{route('inv.add')}}" class="btn btn-primary" type="submit">
                 Add New Item
             </a>
-            <a href="{{route('inv.addcat')}}" class="btn btn-primary" type="submit">
-                Add New Category
-            </a>
-
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Categories : All
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a href="{{route('inv')}}" class="dropdown-item" type="submit">All</a></li>
-                @foreach($categories as $category)
-                <li><a href="{{route('inv.view', ['category_id' => $category->id])}}" class="dropdown-item" type="submit">
-                {{$category->name}}
-            </a></li>
-                @endforeach
-            </ul>
+            
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories : {{$categoryselect->name}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a href="{{route('inv')}}" class="dropdown-item" type="submit">All</a></li>
+                    @foreach($categories as $category)
+                    <li><a href="{{route('inv.view', ['category_id' => $category->id])}}" class="dropdown-item" type="submit">
+                    {{$category->name}}
+                </a></li>
+                    @endforeach
+                </ul>
+            
 
             <div class="d-flex flex-wrap align-content-start mt-5">
                 
@@ -48,7 +46,7 @@
                     <div class="card mb-4 me-4" style="width: 18rem">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <div class="h5 card-title">{{$item->name}}</div>
+                                <div class="h5 card-title"> {{$item->name}}</div>
                                 
                                     <div>
                                         <div class="rounded p-1 bg-secondary text-white">
