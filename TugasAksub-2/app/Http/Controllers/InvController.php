@@ -45,7 +45,7 @@ class InvController extends Controller
         $categories = category::all();
         $categoryselect = category::find($category_id);
 
-        return view('inventorview', compact('Inventory',"category_id",'categories','categoryselect'));
+        return view('inventory', compact('Inventory',"category_id",'categories','categoryselect'));
     }
 
 
